@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Editar Nota</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label class="form-label">Título</label>
+    <input type="text" class="form-control" name="titulo" value="{{ nota.titulo }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Contenido</label>
+    <textarea class="form-control" name="contenido" rows="4">{{ nota.contenido }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Guardar cambios</button>
+</form>
+{% endblock %}
