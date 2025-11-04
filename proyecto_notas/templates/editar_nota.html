@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}Modificar nota{% endblock %}
+
+{% block content %}
+  <h2>Modificar nota (ID: {{ nota.id }})</h2>
+  <hr>
+  <div class="col-md-8">
+    <form method="POST">
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" 
+               value="{{ nota.titulo }}" required>
+      </div>
+      <div class="mb-3">
+        <label for="contenido" class="form-label">Contenido</label>
+        <textarea class="form-control" id="contenido" name="contenido" 
+                  rows="5">{{ nota.contenido }}</textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-success">Modificar</button>
+      <a href="{{ url_for('listar_notas') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}

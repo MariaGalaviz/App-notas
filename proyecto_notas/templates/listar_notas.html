@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}Lista de Notas{% endblock %}
+
+{% block content %}
+  
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Lista de notas</h2>
+    <a href="{{ url_for('crear_nota') }}" class="btn btn-primary">
+      + Nueva Nota
+    </a>
+  </div>
+
+  <hr>
+
+  <div class="list-group">
+    {% if notas %}
+      {% for nota in notas %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+          
+          <span class="fs-5">{{ nota.titulo }}</span>
+          
+          <div>
+            <a href="{{ url_for('editar_nota_ruta', id=nota.id) }}" 
+               class="btn btn-primary btn-sm">
+              Modificar
+            </a>
+            
+            <form action="{{ url_for('eliminar_nota_ruta', id=nota.id) }}" 
+                  method="POST" 
+                  onsubmit="return confirm('¿Eliminar esta nota?');" 
+                  style="display: inline;">
+              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="alert alert-info" role="alert">
+        Aún no tienes notas. ¡Crea tu primera nota!
+      </div>
+    {% endif %}
+  </div>
+
+{% endblock %}
